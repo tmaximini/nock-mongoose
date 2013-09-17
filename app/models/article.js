@@ -96,7 +96,10 @@ ArticleSchema.methods = {
     var self = this
 
     imager.upload(images, function (err, cdnUri, files) {
-      if (err) return cb(err)
+      if (err) {
+        console.log("error uploading images");
+        return cb(err);
+      }
       if (files.length) {
         self.image = { cdnUri : cdnUri, files : files }
       }

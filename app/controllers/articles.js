@@ -45,7 +45,7 @@ exports.index = function(req, res){
         pages: Math.ceil(count / perPage)
       })
     })
-  })  
+  })
 }
 
 /**
@@ -66,6 +66,10 @@ exports.new = function(req, res){
 exports.create = function (req, res) {
   var article = new Article(req.body)
   article.user = req.user
+
+
+  console.log("creating article...")
+  console.dir(req.files)
 
   article.uploadAndSave(req.files.image, function (err) {
     if (!err) {
